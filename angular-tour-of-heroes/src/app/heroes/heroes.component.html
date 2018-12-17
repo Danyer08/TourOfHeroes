@@ -1,8 +1,15 @@
 <h2>My Heroes</h2>
-<ul style="text-align: left" class="heroes">
+<div class="order">
+  <label>Hero name:
+    <input class="form-control" #heroName>
+  </label>
+  <button class="effect button-margin" (click)="add(heroName.value); heroName.value=''">Add</button>
+</div>
+<ul class="heroes">
   <li *ngFor="let hero of heroes">
-    <a routerLink="/src/app/heroes/hero-detail{{hero.id}}"></a>
-    <span class="badge">{{hero.id}}</span> {{hero.name}}
+    <a class="order" routerLink="/detail/{{hero.id}}">
+      <span class="badge">{{hero.id}}</span> {{hero.name}}
+    </a>
+    <button style="float: right;" class="delete" title="delete hero" (click)="delete(hero)">x</button>
   </li>
 </ul>
-<app-hero-detail></app-hero-detail>
